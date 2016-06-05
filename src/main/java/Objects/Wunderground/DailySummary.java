@@ -1,9 +1,19 @@
 package Objects.Wunderground;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * @author Alex, 6/5/2016.
  */
 public class DailySummary {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
+    private Integer _id;
+
     private Date _date;
     private String _fog;
     private String _rain;
