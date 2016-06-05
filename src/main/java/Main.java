@@ -2,58 +2,15 @@
  * @author Alex, 6/5/2016.
  */
 
-import Objects.Wunderground.Date;
-import Objects.Wunderground.History;
-import Objects.Wunderground.Observation;
+import Objects.WeatherDayReport;
 import com.alibaba.fastjson.JSON;
 
 public class Main {
     public static void main(String args[]) {
 
-        String dateString = "{\n" +
-                "\t\t\"pretty\": \"June 1, 2016\",\n" +
-                "\t\t\"year\": \"2016\",\n" +
-                "\t\t\"mon\": \"06\",\n" +
-                "\t\t\"mday\": \"01\",\n" +
-                "\t\t\"hour\": \"00\",\n" +
-                "\t\t\"min\": \"00\",\n" +
-                "\t\t\"tzname\": \"Europe/Bucharest\"\n" +
-                "\t\t}";
+        WeatherDayReport weatherDayReport = JSON.parseObject(json, WeatherDayReport.class);
 
-        Date date = new Date();
-
-        date = JSON.parseObject(dateString, Date.class);
-
-        String observationString = "{\n" +
-                "\t\t\"date\": {\n" +
-                "\t\t\"pretty\": \"12:00 AM EEST on June 01, 2016\",\n" +
-                "\t\t\"year\": \"2016\",\n" +
-                "\t\t\"mon\": \"06\",\n" +
-                "\t\t\"mday\": \"01\",\n" +
-                "\t\t\"hour\": \"00\",\n" +
-                "\t\t\"min\": \"00\",\n" +
-                "\t\t\"tzname\": \"Europe/Bucharest\"\n" +
-                "\t\t},\n" +
-                "\t\t\"utcdate\": {\n" +
-                "\t\t\"pretty\": \"9:00 PM GMT on May 31, 2016\",\n" +
-                "\t\t\"year\": \"2016\",\n" +
-                "\t\t\"mon\": \"05\",\n" +
-                "\t\t\"mday\": \"31\",\n" +
-                "\t\t\"hour\": \"21\",\n" +
-                "\t\t\"min\": \"00\",\n" +
-                "\t\t\"tzname\": \"UTC\"\n" +
-                "\t\t},\n" +
-                "\t\t\"tempm\":\"15\", \"tempi\":\"59\",\"dewptm\":\"14\", \"dewpti\":\"56\",\"hum\":\"88\",\"wspdm\":\"7.2\", \"wspdi\":\"4.5\",\"wgustm\":\"\", \"wgusti\":\"\",\"wdird\":\"260\",\"wdire\":\"West\",\"vism\":\"10\", \"visi\":\"6\",\"pressurem\":\"1015\", \"pressurei\":\"29.97\",\"windchillm\":\"-999\", \"windchilli\":\"-999\",\"heatindexm\":\"-9999\", \"heatindexi\":\"-9999\",\"precipm\":\"\", \"precipi\":\"\",\"conds\":\"\",\"icon\":\"\",\"fog\":\"0\",\"rain\":\"0\",\"snow\":\"0\",\"hail\":\"0\",\"thunder\":\"0\",\"tornado\":\"0\",\"metar\":\"AAXX 31211 15120 22997 02602 10149 20136 39666 40149 53010 333 55300 10204 20000\" }";
-
-        Observation observation = new Observation();
-
-        observation = JSON.parseObject(observationString, Observation.class);
-
-        History history = new History();
-
-        history = JSON.parseObject(json, History.class);
-
-        System.out.println(history.getDate().getPretty());
+        System.out.println(weatherDayReport.getHistory().getDate().getPretty());
     }
 
     public static String json = "\n" +

@@ -4,7 +4,7 @@ package Objects.Wunderground;
  * @author Alex, 6/5/2016.
  */
 public class DailySummary {
-    private Date _date = new Date();
+    private Date _date;
     private String _fog;
     private String _rain;
     private String _snow;

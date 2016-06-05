@@ -7,9 +7,9 @@ import java.util.List;
  * @author Alex, 6/5/2016.
  */
 public class History {
-    private Date _date = new Date();
+    private Date _date;
     private List<Observation> _observations = new ArrayList<Observation>();
-    private DailySummary _dailysummary = new DailySummary();
+    private List<DailySummary> _dailysummary = new ArrayList<DailySummary>();
 
     public Date getDate() {
         return _date;
@@ -31,11 +31,15 @@ public class History {
         _observations.add(observation);
     }
 
-    public DailySummary getDailysummary() {
+    public List<DailySummary> getDailysummary() {
         return _dailysummary;
     }
 
-    public void setDailysummary(DailySummary dailysummary) {
+    public void setDailysummary(List<DailySummary> dailysummary) {
         _dailysummary = dailysummary;
+    }
+
+    public void addDailysummary(DailySummary dailySummary) {
+        _dailysummary.add(dailySummary);
     }
 }
